@@ -33,10 +33,10 @@ public class bookSupply{
     @Override
     
     public String toString(){
-        return "Author :\t" + getAuthor() + "\t" + "\tTitle of the Book\t" + getTitle() + "\t" + "Price : \t" + getPrice() + "\t" + "publisher of this Book\t" + getPublisher() + "\t" + "Remaining stock\t" + getStock(); 
+        return "Author : " + getAuthor() + "\n" + "Title of the Book : " + getTitle() + "\n" + "Price : " + getPrice() + "\n" + "publisher of this Book : " + getPublisher() + "\n" + "Remaining stock : " + getStock(); 
     }
     
-    public Boolean searchBook(String author , String title){
+    public boolean searchBook(String author , String title){
         if(this.author.equals(author) && this.title.equals(title)){
             return true;
         }
@@ -55,6 +55,7 @@ public class bookSupply{
         stock = stock - copies;
         return stock;
     }
+    
     
     
 }
