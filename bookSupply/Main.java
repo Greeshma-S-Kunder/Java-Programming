@@ -35,18 +35,23 @@ public class Main {
                         sc.nextLine();
                         
                         book.add(new bookSupply(name, title, price, pub, stock));
+                        System.out.println("Book added successfully!!\n");
                         
                     }
                     break;
                     
             case 2 :System.out.println("Enter the Author's name and title of the book : ");
-                    
                     String auth_name = sc.nextLine();
                     String title_book = sc.nextLine();
                     boolean found = false;
 
                     for(bookSupply bk : book){
+                       
                         if(bk.searchBook(auth_name, title_book)){
+                            if(bk.getStock() == 0){
+                               System.out.println("no stock!!");
+                               break;
+                            }
                             found = true;
                             System.out.println("Book found\n");
                             System.out.println(bk);
@@ -55,7 +60,7 @@ public class Main {
                             int copies = sc.nextInt();
                             sc.nextLine();
                             if(bk.getStock() < copies){
-                                System.out.println("Not in stock :(");
+                                System.out.println("required copies not in stock :(");
                                 break;
                             }
                             else{
@@ -70,8 +75,31 @@ public class Main {
                         System.out.println("Book not found");
                     }
                     break;
+            case 3 :System.out.println("Enter author's name and title  of the book, which you want to remove : ");
+                    String author1 = sc.nextLine();
+                    String title1 = sc.nextLine();
+                    boolean found2 = false;  
+                    //Iterator is an object that lets you move through a collection one element at a time.
+                    //Think of it like a pointer/index that starts before the first element.Inorder to delete the entire book from the list we can use iterator(). 
+                    Iterator<bookSupply> iterator1 = book.iterator();
+                    while(iterator1.hasNext()) {
+                        bookSupply bk1 = iterator1.next();
+                        if(bk1.searchBook(author1, title1)) {
+                            found2 = true;
+                            System.out.println("Book successfully removed!!");
+                            iterator1.remove();
+                            break;
+                        }
+                        
+                    }
+                    if(!found2){
+                        System.out.println("Book not found!!");
+                    }
                     
-            default: System.out.println("default");
+                    break;
+
+                    
+            default: System.out.println("Thank you , please visit again!!..");
                     
         }
         
